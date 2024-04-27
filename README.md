@@ -16,7 +16,7 @@ This is a Flask web application for predicting diabetes based on medical paramet
 - scikit-learn
 - NumPy
 
-python app.py
+Run file: diabetes.py
 
 Model Deployment and Web Page
 #![image](https://github.com/YashS123/Capstone-Project/assets/90236128/7b1b6727-b06f-42cd-b77e-2a34be154c62)
@@ -26,6 +26,9 @@ Model Deployment and Web Page
 
 
 
-Contributors
-Yash Shingavi
-Ankur Kumar
+## Contributors
+
+❤️ Yash Shingavi
+
+❤️ Ankur Kumar
+
