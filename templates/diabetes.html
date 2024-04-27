@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://kit.fontawesome.com/df7ee7edbf.js" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="shortcut icon" href="static/im9.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('static/img6.png');
+            /* Replace 'medical-background.jpg' with your background image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 1);
+            /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0ff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: calc(100% - 22px);
+            /* Adjusted width */
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #0ff;
+            margin-top: 10px;
+            color: #111;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: neon-hover 1.5s infinite alternate;
+
+            display: inline-block;
+            width: 100px;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #0cf;
+            font-weight: bold;
+        }
+
+        .home-button {
+            text-align: center;
+        }
+
+        .home-button button {
+            background-color: #0ff;
+            color: #111;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button button:hover {
+            background-color: #0cf;
+        }
+
+        .gif-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .gif-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <div class="gif-container">
+            <img src="static/im1.gif" alt="GIF">
+        </div>
+        <form id="diabetesForm" action="{{ url_for('prediction') }}" method="POST">
+            <div class="form-group">
+                <label for="param1">Enter Patient Details Below: </label>
+                <br>
+                <div class="form-group">
+                    <input type="text" id="param1" name="param1" placeholder="Enter your Name: " required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="param2" name="param2" placeholder="Enter your Contact Number in the format xxx-xxx-xxxx: "
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        title="Please enter a valid telephone number in the format xxx-xxx-xxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="param3" name="param3" placeholder="Enter your Date of Birth in dd/mm/yyyy: "
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="param4" name="param4" placeholder="Enter your Blood Group: " required>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <label for="param3">Enter Details for Predicting Diabetes</label>
+                    <br>
+                    <input type="number" id="param5" name="param5" placeholder="Number of Pregnancies: " required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="param6" name="param6" placeholder="Enter the Glucose Level: " required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="param7" name="param7" placeholder="Enter the Blood Pressure Level: "
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="param8" name="param8" placeholder="Enter Skin Thickness: " required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="param9" name="param9" placeholder="Enter Insulin Level in Blood: " required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="param10" name="param10" placeholder="Enter BMI(Body Mass Index): " required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="param11" name="param11" placeholder="Enter Diabetes Pedigree Function: "
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="param12" name="param12" placeholder="Enter your Age: " required>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Predict">
+                </div>
+        </form>
+
+        <div class="home-button">
+            <button onclick="window.location.href='http://127.0.0.1:2500/'">Home Page</button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes neon-hover {
+            from {
+                text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 55px #0ff, 0 0 75px #0ff;
+            }
+
+            to {
+                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 55px #0ff, 0 0 75px #0ff, 0 0 100px #0ff;
+            }
+        }
+    </style>
+
+</body>
+
+</html>

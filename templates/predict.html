@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://kit.fontawesome.com/df7ee7edbf.js" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="shortcut icon" href="static/im9.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-right: 680px;
+            padding: 0;
+            background: url('static/im2.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* Dark background color */
+            color: #fff;
+            overflow-x: hidden;
+            /* Hide horizontal scrollbar */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px 50px 50px 50px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Semi-transparent black background */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .header-green {
+            color: #00FF00;
+            /* Green color */
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #00FF00;
+            /* Changed to green */
+            /* Green color */
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ebe3e3;
+            border: 1px solid #ebe3e3;
+        }
+
+        th {
+            background-color: #101010;
+        }
+
+        .prediction {
+            text-align: center;
+            margin-top: 20px;
+            color: #00FF00;
+            /* Changed to green */
+            /* Green color */
+        }
+
+        .prediction h2 {
+            color: #00FF00;
+            /* Changed to green */
+            /* Green color */
+        }
+
+        .prediction p {
+            color: #fff;
+            /* Changed to white */
+            /* White color */
+        }
+
+        .download-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .download-button button {
+            background-color: #3498db;
+            /* Blue color */
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            /* Remove underline */
+            margin-right: 10px;
+            /* Added margin-right */
+        }
+
+        .download-button button:hover {
+            background-color: #2980b9;
+            /* Darker blue color */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="header-green">Diabetes Prediction</h1>
+
+        <div class="section">
+            <h2 class="section-title">Patient Information</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>{{age}} years</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>{{dob}}</td>
+                </tr>
+                <tr>
+                    <th>Blood Group</th>
+                    <td>{{bg}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Medical Report & Prediction</h2>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Body Mass Index (BMI)</td>
+                    <td>{{bmi}}</td>
+                </tr>
+                <tr>
+                    <td>Average Blood Pressure</td>
+                    <td>{{bp}}</td>
+                </tr>
+                <tr>
+                    <td>Glucose Level</td>
+                    <td>{{gl}}</td>
+                </tr>
+                <tr>
+                    <td>Insulin Level</td>
+                    <td>{{il}}</td>
+                </tr>
+                <tr>
+                    <td>Skin Thickness</td>
+                    <td>{{st}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Pregnancies</td>
+                    <td>{{p}}</td>
+                </tr>
+            </table>
+
+            <div class="prediction">
+                <h2>Prediction: {{tet}}</h2>
+                <p style="color: #fff;">{{tot}}</p> <!-- Changed to white -->
+            </div>
+        </div>
+
+        <div class="download-button">
+            <button onclick="downloadPDF()">Download PDF <i class="fa-solid fa-download"></i></button>
+            <a href="http://127.0.0.1:2500/diabetes"><button><i class="fa-solid fa-caret-left"></i> Back to Prediction</button></a>
+            <!-- Added Back to Prediction button -->
+            <a href="http://127.0.0.1:2500/"><button><i class="fa-solid fa-house"></i>  Go back to Home Page</button></a>
+            <!-- Added Go back to Home Page button -->
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            const container = document.querySelector('.container');
+
+            // Get the container content
+            const content = container.innerHTML;
+
+            // Create a new window
+            const win = window.open('', '', 'width=800,height=600');
+
+            // Write the content into the new window
+            win.document.write('<html><head>');
+            win.document.write('<title>Diabetes Prediction</title>');
+            win.document.write('</head><body>');
+            win.document.write(content);
+            win.document.write('</body></html>');
+
+            // Close the new window
+            win.document.close();
+
+            // Print the content
+            win.print();
+        }
+    </script>
+
+</body>
+
+</html>
