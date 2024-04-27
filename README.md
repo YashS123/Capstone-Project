@@ -10,7 +10,7 @@ This is a Flask web application for predicting diabetes based on medical paramet
 
 ## Prerequisites
 
-- Python 3.x
+- Python
 - Flask
 - Pandas
 - scikit-learn
